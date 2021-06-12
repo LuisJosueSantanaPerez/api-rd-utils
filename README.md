@@ -37,7 +37,7 @@ Instalar localmente:
 
 -   Buscar paises:  
     `Type: GET`  
-    `URL: http://api-url.com/api/paises/find `  
+    `URL: http://api-url.com/api/paises/search `  
     `Parameter: busqueda | Parametro de busqueda | Obligatorio `
 
 <hr>
@@ -55,7 +55,7 @@ Instalar localmente:
 
 -   Buscar provincias:  
     `Type: GET`  
-    `URL: http://api-url.com/api/provincias/find `  
+    `URL: http://api-url.com/api/provincias/search `  
     `Parameter: busqueda | Parametro de busqueda | Obligatorio `
 
 -   Listar provincias por Pais:  
@@ -78,7 +78,7 @@ Instalar localmente:
 
 -   Buscar municipios:  
     `Type: GET`  
-    `URL: http://api-url.com/api/municipios/find `  
+    `URL: http://api-url.com/api/municipios/search `  
     `Parameter: busqueda | Parametro de busqueda | Obligatorio `
 
 -   Listar municipios por Provincias:  
@@ -101,7 +101,7 @@ Instalar localmente:
 
 -   Buscar sectores:  
     `Type: GET`  
-    `URL: http://api-url.com/api/sectores/find `  
+    `URL: http://api-url.com/api/sectores/search `  
     `Parameter: busqueda | Parametro de busqueda | Obligatorio `
 
 -   Listar sectores por Municipios:  
