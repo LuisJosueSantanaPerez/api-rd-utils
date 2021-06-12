@@ -27,11 +27,11 @@ jobs:
     - name: Create Database
       run: |
         mkdir -p database
-        touch database/database.sqlite
+        touch database/rd_utils.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
+        DB_DATABASE: database/rd_utils.sqlite
       run: vendor/bin/phpunit
     - name: Run Seeders for Models
       run: php artisan migrate:refresh --seed
