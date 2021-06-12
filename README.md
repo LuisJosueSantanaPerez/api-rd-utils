@@ -40,30 +40,38 @@ API:
 #### Provincias
 
 -   Listado de provincias:  
-`Type: GET`  
-`URL: http://api-url.com/api/provincias/getAll `
+    `Type: GET`  
+    `URL: http://api-url.com/api/provincias/getAll `
+
 <hr>
+
 -   Obtener una provincia:  
-`Type: GET`  
-`URL: http://api-url.com/api/provincias/getOne `  
-`Parameter: province_code | Province Code | Obligatorio `
+    `Type: GET`  
+    `URL: http://api-url.com/api/provincias/getOne `  
+    `Parameter: province_code | Province Code | Obligatorio `
+
 <hr>
+
 -   Buscar provincias:  
-`Type: GET`  
-`URL: http://api-url.com/api/provincias/find `  
-`Parameter: busqueda | Parametro de busqueda | Obligatorio `
+    `Type: GET`  
+    `URL: http://api-url.com/api/provincias/find `  
+    `Parameter: busqueda | Parametro de busqueda | Obligatorio `
+
 <hr>
+
 -   Listar provincias por Pais:  
-`Type: GET`  
-`URL: http://api-url.com/api/provincias/byCountry `  
-`Parameter: country_id | Country ID | Obligatorio `
+    `Type: GET`  
+    `URL: http://api-url.com/api/provincias/byCountry `  
+    `Parameter: country_id | Country ID | Obligatorio `
+
 <hr>
 
 #### Municipios
 
 -   Listado de municipios:  
-`Type: GET`  
-`URL: http://api-url.com/api/municipios/getAll `
+    `Type: GET`  
+    `URL: http://api-url.com/api/municipios/getAll `
+
 <hr>
 -   Obtener un municipio:  
 `Type: GET`  
