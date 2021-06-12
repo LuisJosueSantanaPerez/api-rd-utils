@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Sector;
 use Illuminate\Http\Request;
 
+use App\Tools\ResponseCodes;
+use App\Http\Resources\SectorResource;
+use App\Exceptions\SomethingWentWrong;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
+
 class SectorController extends Controller
 {
     /**
@@ -14,51 +20,85 @@ class SectorController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        try {
+            $sectors = Sector::orderBy('name','asc')->get();
+            return SectorResource::collection($sectors);
+        } catch (\Throwable $th) {
+            throw new SomethingWentWrong;
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sector  $sector
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Sector $sector)
+    public function show(Request $request)
     {
-        //
+        $request->validate([
+            'sector_code' => 'required',
+        ]);
+
+        try {
+            $sector = Sector::where('code',$request->sector_code)->get()->first();
+            if($sector){
+                return new SectorResource($sector);
+            } else {
+                return response()->json(['status' => '404', 'message' => 'Not found'], ResponseCodes::NOT_FOUND);
+            }
+        } catch (\Throwable $th) {
+            throw new SomethingWentWrong;
+        }
     }
 
     /**
-     * Update the specified resource in storage.
+     * search in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sector  $sector
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sector $sector)
+    public function search(Request $request)
     {
-        //
+        $request->validate([
+            'busqueda' => 'required',
+        ]);
+
+        try {
+            $sectors = Sector::where('name','like','%'.$request->busqueda.'%')->get();
+            if($sectors->count() <= 0 ){
+                return response()->json(['status' => '404', 'message' => 'Nothing found'], ResponseCodes::NOT_FOUND);
+            } else {
+                return SectorResource::collection($sectors);
+            }
+        } catch (\Throwable $th) {
+            throw new SomethingWentWrong;
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
+    * search in storage by municipality
      *
-     * @param  \App\Models\Sector  $sector
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sector $sector)
+    public function byMunicipality(Request $request)
     {
-        //
+        $request->validate([
+            'municipality_code' => 'required',
+        ]);
+
+        try {
+            $sectors = Sector::where('municipality_code', $request->municipality_code)->get();
+            if($sectors->count() <= 0 ){
+                return response()->json(['status' => '404', 'message' => 'Nothing found'], ResponseCodes::NOT_FOUND);
+            } else {
+                return SectorResource::collection($sectors);
+            }
+        } catch (\Throwable $th) {
+            throw new SomethingWentWrong;
+        }
     }
+
+
 }

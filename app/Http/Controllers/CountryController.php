@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
+use App\Tools\ResponseCodes;
+use App\Http\Resources\CountryResource;
+use App\Exceptions\SomethingWentWrong;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
+
 class CountryController extends Controller
 {
     /**
@@ -14,51 +20,62 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $countries = Country::orderBy('name','asc')->get();
+            return CountryResource::collection($countries);
+        } catch (\Throwable $th) {
+            throw new SomethingWentWrong;
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
+     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show(Request $request)
     {
-        //
+        $request->validate([
+            'country_id' => 'required',
+        ]);
+
+        $country = Country::findOrFail($request->country_id);
+
+        try {
+            return new CountryResource($country);
+        } catch (\Throwable $th) {
+            throw new SomethingWentWrong;
+        }
     }
 
     /**
-     * Update the specified resource in storage.
+     * search in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function search(Request $request)
     {
-        //
+
+        $request->validate([
+            'busqueda' => 'required',
+        ]);
+
+        try {
+            $countries = Country::where('name','like','%'.$request->busqueda.'%')->get();
+            if($countries->count() <= 0 ){
+                return response()->json(['status' => '404', 'message' => 'Nothing found'], ResponseCodes::NOT_FOUND);
+            } else {
+                return CountryResource::collection($countries);
+            }
+        } catch (\Throwable $th) {
+            throw new SomethingWentWrong;
+        }
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Country  $country
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Country $country)
-    {
-        //
-    }
+
+
+
 }

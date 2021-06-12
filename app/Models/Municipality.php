@@ -11,6 +11,11 @@ class Municipality extends Model
 
     public function province()
     {
-        return $this->hasOne(Province::class, 'id', 'province_id');
+        return $this->belongsTo(Province::class, 'province_code', 'code');
+    }
+
+    public function sectors()
+    {
+        return $this->hasmany(Sector::class, 'municipality_code', 'code');
     }
 }

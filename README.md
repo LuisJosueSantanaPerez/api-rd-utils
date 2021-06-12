@@ -9,9 +9,18 @@
 
 ## Dominican Republic Utils
 
+## Datos Demarcaciones y Provincias para Republica Dominicana
+
 Instalar localmente:
 
 -   Composer Install
 -   cp .env.example .env
 -   php artisan key:generate
 -   php artisan migrate --seed
+
+API:
+
+# Paises
+
+-   GetAll retorna listado de paises
+    http://api-url.com/api/paises/getAll

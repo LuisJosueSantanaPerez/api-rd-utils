@@ -90,7 +90,7 @@ class MunicipalitiesSeeder extends Seeder
             ["province_code" => '33',"code" => '1403',"name" => "EL FACTOR",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ["province_code" => '33',"code" => '1404',"name" => "RIO SAN JUAN",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ["province_code" => '62',"code" => '1501',"name" => "MONTE CRISTI",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ["province_code" => '62',"code" => '1502',"name" => "CASTAÃ‘UELAS",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ["province_code" => '62',"code" => '1502',"name" => "CASTAÑUELAS",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ["province_code" => '62',"code" => '1503',"name" => "GUAYUBIN",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ["province_code" => '62',"code" => '1504',"name" => "LAS MATAS DE SANTA CRUZ",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ["province_code" => '62',"code" => '1505',"name" => "PEPILLO SALCEDO",'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
