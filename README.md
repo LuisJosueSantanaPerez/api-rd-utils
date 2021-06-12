@@ -7,13 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Portal Nacional de Becas
+## Dominican Republic Utils
 
 Instalar localmente:
 
 -   Composer Install
 -   cp .env.example .env
 -   php artisan key:generate
--   php artisan migrate
--   Ver UML de las Clases: http://localhost/uml
--   Generar ERD de las Entidades: php artisan generate:erd
+-   php artisan migrate --seed
