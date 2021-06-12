@@ -34,4 +34,8 @@ jobs:
         DB_DATABASE: database/rd_utils.sqlite
       run: vendor/bin/phpunit
     - name: Run Seeders for Models
-      run: php artisan migrate:refresh --seed
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/rd_utils.sqlite
+      run: php artisan migrate --seed
+      
