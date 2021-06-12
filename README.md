@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Dominican Republic Utils
+# Dominican Republic Utils
 
 ## Datos Demarcaciones y Provincias para Republica Dominicana
 
@@ -20,7 +20,85 @@ Instalar localmente:
 
 API:
 
-# Paises
+#### Paises
 
--   GetAll retorna listado de paises
-    http://api-url.com/api/paises/getAll
+-   Listado de paises:  
+`Type: GET`  
+`URL: http://api-url.com/api/paises/getAll `
+<hr>
+-   Obtener un pais:  
+`Type: GET`  
+`URL: http://api-url.com/api/paises/getOne `  
+`Parameter: country_id | Country ID | Obligatorio `
+<hr>
+-   Buscar paises:  
+`Type: GET`  
+`URL: http://api-url.com/api/paises/find `  
+`Parameter: busqueda | Parametro de busqueda | Obligatorio `
+<hr>
+
+#### Provincias
+
+-   Listado de provincias:  
+`Type: GET`  
+`URL: http://api-url.com/api/provincias/getAll `
+<hr>
+-   Obtener una provincia:  
+`Type: GET`  
+`URL: http://api-url.com/api/provincias/getOne `  
+`Parameter: province_code | Province Code | Obligatorio `
+<hr>
+-   Buscar provincias:  
+`Type: GET`  
+`URL: http://api-url.com/api/provincias/find `  
+`Parameter: busqueda | Parametro de busqueda | Obligatorio `
+<hr>
+-   Listar provincias por Pais:  
+`Type: GET`  
+`URL: http://api-url.com/api/provincias/byCountry `  
+`Parameter: country_id | Country ID | Obligatorio `
+<hr>
+
+#### Municipios
+
+-   Listado de municipios:  
+`Type: GET`  
+`URL: http://api-url.com/api/municipios/getAll `
+<hr>
+-   Obtener un municipio:  
+`Type: GET`  
+`URL: http://api-url.com/api/municipios/getOne `  
+`Parameter: municipality_code | Municipality Code | Obligatorio `
+<hr>
+-   Buscar municipios:  
+`Type: GET`  
+`URL: http://api-url.com/api/municipios/find `  
+`Parameter: busqueda | Parametro de busqueda | Obligatorio `
+<hr>
+-   Listar municipios por Provincias:  
+`Type: GET`  
+`URL: http://api-url.com/api/municipios/byProvince `  
+`Parameter: province_code | Province Code | Obligatorio `
+<hr>
+
+#### Sectores
+
+-   Listado de sectores:  
+`Type: GET`  
+`URL: http://api-url.com/api/sectores/getAll `
+<hr>
+-   Obtener un sector:  
+`Type: GET`  
+`URL: http://api-url.com/api/sectores/getOne `  
+`Parameter: sector_code | Sector Code | Obligatorio `
+<hr>
+-   Buscar sectores:  
+`Type: GET`  
+`URL: http://api-url.com/api/sectores/find `  
+`Parameter: busqueda | Parametro de busqueda | Obligatorio `
+<hr>
+-   Listar sectores por Municipios:  
+`Type: GET`  
+`URL: http://api-url.com/api/sectores/byMunicipality `  
+`Parameter: municipality_code | Municipality Code | Obligatorio `
+<hr>
